@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./chat.css"; // Import the CSS file
+import "./chat.css";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -15,7 +15,7 @@ const Chat = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/chatbot/", {
+      const response = await fetch("http://127.0.0.1:8000/api/chat/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +28,11 @@ const Chat = () => {
       }
 
       const data = await response.json();
-      const botMessage = { sender: "bot", text: data.response };
+      const content = data.response[0][1]
+      const botMessage = { sender: "bot", text: content };
+      console.log(typeof data.response[0]); // e.g., "string", "object", etc.
+      console.log(Object.keys(data.response[0]));
+      console.dir(data.response[0]);
 
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
