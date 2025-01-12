@@ -18,7 +18,7 @@ const Chat = () => {
 
     try {
       // Send user message to backend
-      const response = await fetch("http://18.217.214.147:8000/api/chat/", {
+      const response = await fetch("http://3.145.76.90:8000/api/chat/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

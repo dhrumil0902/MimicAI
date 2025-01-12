@@ -106,7 +106,7 @@ Make the flow be like a conversation and feel free to ask questions back. Use th
 """
 
 client = OpenAI(
-  api_key="sk-svcacct-21wZQaBc8_ukUENTNQ9msw1gPIrQujyDXVK1bWIOKEaoA-D_AWCvZespSTceKp9T3BlbkFJh0iMq6w89rIzG6Ebw03ccdWlmZS8t5SE1wSULmDa_WXLtcJQmiVTwLKIV4nrEAA"
+  api_key=os.getenv("OPENAI_API_KEY")
 )
 class ChatbotAPIView(APIView):
     def post(self, request):
