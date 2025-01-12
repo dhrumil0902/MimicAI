@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./chat.css";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [userMessage, setUserMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const chatEndRef = useRef(null);
 
   const handleSendMessage = async () => {
     if (!userMessage.trim()) return;
 
     const newMessage = { sender: "user", text: userMessage };
     setMessages((prevMessages) => [...prevMessages, newMessage]);
-    setUserMessage(""); 
+    setUserMessage("");
     setLoading(true);
 
     try {
@@ -28,11 +29,8 @@ const Chat = () => {
       }
 
       const data = await response.json();
-      const content = data.response[0][1]
+      const content = data.response[0][1];
       const botMessage = { sender: "bot", text: content };
-      console.log(typeof data.response[0]); // e.g., "string", "object", etc.
-      console.log(Object.keys(data.response[0]));
-      console.dir(data.response[0]);
 
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
@@ -46,8 +44,16 @@ const Chat = () => {
     }
   };
 
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div className="chat-container">
+      <div className="chat-header">
+        <h1>Let's Chat</h1>
+        <p className="chat-description">Hi, I am here to mimic Dhrumil, I will try to answer questions to the best of my ability, as if I was Dhrumil. I have been hyper-tuned to be his persona.</p>
+      </div>
       <div className="chat-box">
         {messages.map((msg, index) => (
           <div
@@ -57,7 +63,14 @@ const Chat = () => {
             {msg.text}
           </div>
         ))}
-        {loading && <div className="message bot-message">Typing...</div>}
+        {loading && (
+          <div className="message bot-message typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        )}
+        <div ref={chatEndRef}></div>
       </div>
       <div className="input-container">
         <input
@@ -65,7 +78,7 @@ const Chat = () => {
           type="text"
           value={userMessage}
           onChange={(e) => setUserMessage(e.target.value)}
-          placeholder="Type your message..."
+          placeholder="Ask me a question..."
         />
         <button className="button" onClick={handleSendMessage} disabled={loading}>
           Send
