@@ -10,6 +10,7 @@
     background-color: #fff;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 100px);
   }
   
   /* Header */
@@ -37,7 +38,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto; /* Adds the scrollbar */
-    max-height: 600px; /* Limit how much the chat can grow */
+    max-height: 100vh; /* Limit how much the chat can grow */
     padding: 15px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
