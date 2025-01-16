@@ -1,7 +1,7 @@
 # MimicAI: An AI Chatbot That Impersonates Dhrumil
 http://mimicai.s3-website.us-east-2.amazonaws.com/
 
-**MimicAI** is a conversational AI chatbot designed to impersonate me **Dhrumil**, mimicking my personality, tone, and conversational style. 
+**MimicAI** is a conversational AI chatbot designed to impersonate me, mimicking my personality, tone, and conversational style. 
 MimicAI provides a personalized, engaging chat experience that feels like interacting with Dhrumil himself.
 
 ---
