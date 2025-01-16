@@ -21,6 +21,5 @@ MimicAI provides a personalized, engaging chat experience that feels like intera
 
 - **Frontend**: React, JavaScript, HTML, CSS
 - **Backend**: Django (Python)
-- **Database**: PostgreSQL
 - **Deployment**: AWS S3, EC2
 - **Natural Language Processing**: Pre-trained LLM fine-tuned for personalization
